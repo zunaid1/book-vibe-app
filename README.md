@@ -17,17 +17,23 @@ npm -v
 ------------------------------------------------------------------------
 
 ## Step‑2: Vite React project create
+সর্বশেষ আপডেট ভার্সনের Vite দিয়ে প্রজেক্ট তৈরী করার জন্য এই কমান্ড লিখুন-
 
 ``` bash
 npm create vite@latest my-react-app
 ```
 
-অথবা
+সুনির্দিষ্ট ভার্সনের vite দিয়ে প্রজেক্ট তৈরী করতে এই কমান্ড লিখুন-
 
 ``` bash
 npm create vite@7 my-react-app
 ```
 
+অথবা
+``` bash
+npm create vite@7
+```
+----------------------------------------------
 তারপর select করুন:
 
     Project name: my-react-app
