@@ -1,5 +1,10 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { TiTickOutline } from "react-icons/ti";
+import { MdChecklistRtl } from "react-icons/md";
+import { addToStoredDB } from '../../utility/addToDB';
+
+
 
 const BookDetails = () => {
 	const { id } = useParams();
@@ -12,23 +17,35 @@ const BookDetails = () => {
 	const { bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = singleBook;
 
 
+	const handleMarkAsRead = (id) => {
+		addToStoredDB(id);
+
+	}
+
+
 	return (
 		<>
-			<div className="card bg-base-100 shadow-2xl">
-				<figure>
+			<div className="card bg-base-100 shadow-2xl flex flex-col md:flex-row gap-2 items-center justify-center">
+				<figure className='w-full md:w-1/2'>
 					<img
 						src={image}
 						alt="Images" />
 				</figure>
-				<div className="card-body">
-					<h2 className="card-title">
-						Card Title
-						<div className="badge badge-secondary">NEW</div>
-					</h2>
-					<p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-					<div className="card-actions justify-end">
-						<div className="badge badge-outline">Fashion</div>
-						<div className="badge badge-outline">Products</div>
+				<div className="relative w-full md:w-1/2 px-6 py-3">
+					<h1 className="card-title text-2xl font-bold text-center">
+						{bookName}
+
+					</h1>
+					<div className="badge badge-secondary absolute top-3 right-3 text-[16px] px-6 py-3">{author}</div>
+					<p className='my-3 text-justify'>{review}</p>
+					<div className="card-actions justify-center items-end" >
+
+
+
+						<button onClick={() => { handleMarkAsRead(id) }} className="btn btn-outline btn-primary px-6 py-3 text-xl c"><TiTickOutline />
+							Mark as Read</button>
+						<div className="btn btn-outline btn-primary px-6 py-3 text-xl"><MdChecklistRtl />
+							Add to WishList</div>
 					</div>
 				</div>
 			</div>
