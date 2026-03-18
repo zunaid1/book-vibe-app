@@ -5,6 +5,12 @@ import { MdChecklistRtl } from "react-icons/md";
 import { addToStoredDB } from '../../utility/addToDB';
 
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
+
+
 
 const BookDetails = () => {
 	const { id } = useParams();
@@ -17,8 +23,20 @@ const BookDetails = () => {
 	const { bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = singleBook;
 
 
+
+
 	const handleMarkAsRead = (id) => {
 		addToStoredDB(id);
+
+		MySwal.fire({
+			title: <p>Hello World</p>,
+			didOpen: () => {
+				// `MySwal` is a subclass of `Swal` with all the same instance & static methods
+				MySwal.showLoading()
+			},
+		}).then(() => {
+			return MySwal.fire(<p>Shorthand works too</p>)
+		})
 
 	}
 

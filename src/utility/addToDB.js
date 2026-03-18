@@ -14,7 +14,8 @@ const getStoredBook = () => {
 const addToStoredDB = (id) => {
 	const storedBookData = getStoredBook();
 	if (storedBookData.includes(id)) {
-		alert("Data already exist.")
+		alert("Data already exist.");
+		return;
 	}
 	else {
 		storedBookData.push(id);
@@ -25,4 +26,4 @@ const addToStoredDB = (id) => {
 }
 
 
-export { addToStoredDB }; 
+export { addToStoredDB, getStoredBook }; 
